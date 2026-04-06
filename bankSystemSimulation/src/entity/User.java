@@ -1,19 +1,32 @@
 package entity;
 
 public class User {
-	private String userId;
+	
+	private int userId;
+	private String fullName;
 	private String userName;
 	private String password;
-	private String MobileNumber;
-	private int age;
+	private String mobileNumber;
+	private String address;
 	
-	public String getUserId() {
+	public User(){
+		
+	}
+	public User(String fullName, String userName, String password, String mobileNumber, String address) {
+		this.fullName = fullName;
+		this.userName = userName;
+		this.password = password;
+		this.mobileNumber = mobileNumber;
+		this.address = address;
+	}
+	
+	public int getUserId() {
 		return userId;
 	}
 
-	public void setUserId(String userId) {
+	/*public void setUserId(int userId) {
 		this.userId = userId;
-	}
+	}*/
 
 	public String getUserName() {
 		return userName;
@@ -32,18 +45,29 @@ public class User {
 	}
 
 	public String getMobileNumber() {
-		return MobileNumber;
+		return mobileNumber;
 	}
 
 	public void setMobileNumber(String mobileNumber) {
-		MobileNumber = mobileNumber;
+		this.mobileNumber = mobileNumber;
 	}
 
-	public int getAge() {
-		return age;
+	public String getFullName() {
+		return fullName;
 	}
 
-	public void setAge(int age) {
-		this.age = age;
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
 	}
+
+	public String getAdress() {
+		return address;
+	}
+
+	public void setAdress(String adress) {
+		this.address = adress;
+	}
+
+
+
 }
