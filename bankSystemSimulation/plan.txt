@@ -1,0 +1,16 @@
+1. Users
+   user_id
+   username
+   password
+2. Accounts
+   account_id
+   user_id (FK)
+   account_type (Savings/Current)
+   balance
+3. Transactions
+   transaction_id
+   account_id
+   type (deposit/withdraw/transfer)
+   amount
+   date
+   target_account_id (for transfer)
