@@ -3,13 +3,13 @@
    username
    password
    contact(mobile)
-   Adress
+   Address
    CREATE TABLE users (
     ->     user_id int PRIMARY KEY,
     ->     full_name VARCHAR(150) NOT NULL,
-    ->     user_name VARCHAR(100) NOT NULL,
+    ->     user_name VARCHAR(100) NOT NULL Unique,
     ->     password VARCHAR(255) NOT NULL,
-    ->     mobile_number VARCHAR(15),
+    ->     mobile_number VARCHAR(15) NOT NULL Unique,
     ->     address TEXT
     -> );
    
@@ -19,10 +19,10 @@
    account_type (Savings/Current)
    balance
   CREATE TABLE accounts (
-    ->     account_id int PRIMARY KEY,
-    ->     user_id VARCHAR(50),
+    ->     account_id int PRIMARY KEY AUTOINCR,
+    ->     user_id int FORIIGN KEY,
     ->     account_type ENUM('SAVINGS', 'CURRENT'),
-    ->     balance DOUBLE DEFAULT 0,
+    ->     balance decimal DEFAULT 0,
     ->
     ->     FOREIGN KEY (user_id) REFERENCES users(user_id)
     -> );
@@ -37,11 +37,11 @@
    target_account_id (for transfer)
    CREATE TABLE transactions (
     ->     transaction_id VARCHAR(50) PRIMARY KEY,
-    ->     account_id VARCHAR(50) NOT NULL,
+    ->     account_id int NOT NULL,
     ->     type ENUM('DEPOSIT', 'WITHDRAW', 'TRANSFER') NOT NULL,
     ->     amount DECIMAL(12,2) NOT NULL,
     ->     date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    ->     target_account_id VARCHAR(50),
+    ->     target_account_id int,
     ->
     ->     FOREIGN KEY (account_id) REFERENCES accounts(account_id),
     ->     FOREIGN KEY (target_account_id) REFERENCES accounts(account_id)

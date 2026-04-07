@@ -1,0 +1,26 @@
+plan for database operations
+
+1)UserDAO:
+	
+	- create user
+	- update userDetails(mobile, address, fullName, password, userId)
+	- retrive userdetails(By userId, Username, mobile)
+	- Delete user
+	
+2) TransactionDAO:
+	- create and insert a transaction during any oepration( debit, credit)
+	- view transaction history(only the account logged in)
+	- sort transaction based on(date, amount)
+	- Retrive transaction history based on(credit/debit)
+	
+3) AccountDAO:
+	- create account
+	- update Balance
+	- retrive balance
+	- get account by (UserId, AccountNum)
+	- delete account
+	
+Utility:
+	
+	- class for connection
+	- class for Resultset
