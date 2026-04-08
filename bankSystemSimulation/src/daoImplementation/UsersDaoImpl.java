@@ -115,12 +115,11 @@ public class UsersDaoImpl implements UsersDao{
 	}
 
 	@Override
-	public boolean deleteUser(String userName, String password) throws SQLException {
-		String sql="delete from `users` where `username`=? and `password`=?";
+	public boolean deleteUser(String userName) throws SQLException {
+		String sql="delete from `users` where `username`=?";
 		Connection con = DBConnectionUtil.getConnection();
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, userName);
-		ps.setString(2, password);
 		
 		int rowsUpdated=ps.executeUpdate();
 		return rowsUpdated>0;

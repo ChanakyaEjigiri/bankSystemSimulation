@@ -10,6 +10,6 @@ public interface UsersDao {
 	User getUserByUserId(int userId) throws SQLException;
 	User getUserByUserName(String username) throws SQLException;
 	User getUserByMobile(String mobile) throws SQLException;
-	boolean deleteUser(String userName, String password) throws SQLException;
+	boolean deleteUser(String userName) throws SQLException;
 	
 }
