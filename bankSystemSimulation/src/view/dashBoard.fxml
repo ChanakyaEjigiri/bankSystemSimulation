@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.DashboardController">
+
+    <!-- 🔝 TOP BAR -->
+    <top>
+        <HBox spacing="20" alignment="CENTER_LEFT"
+              style="-fx-padding: 15; -fx-background-color: #2c3e50;">
+            
+            <Label fx:id="lblWelcome"
+                   text="Welcome"
+                   style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;" />
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <Button text="Logout" onAction="#handleLogout"/>
+        </HBox>
+    </top>
+
+    <!-- 📋 LEFT MENU -->
+    <left>
+        <VBox spacing="10"
+              style="-fx-padding: 15; -fx-background-color: #ecf0f1;">
+
+            <!-- Profile -->
+            <Button text="Profile" onAction="#showProfile"/>
+            
+   
+            <Button text="Update Profile" onAction="#showUpdateProfile"/>
+
+            <!-- Account Operations -->
+            <Button text="Deposit" onAction="#showDeposit"/>
+            <Button text="Withdraw" onAction="#showWithdraw"/>
+            <Button text="Transfer" onAction="#showTransfer"/>
+            <Button text="Check Balance" onAction="#showBalance"/>
+
+            <!-- Transactions -->
+            <Button text="Transactions" onAction="#showTransactions"/>
+
+            <!-- Account Management -->
+            <Button text="Create Account" onAction="#showCreateAccount"/>
+            <Button text="Change Account" onAction="#showChangeAccount"/>
+            <Button text="Delete Account" onAction="#deleteAccount"/>
+
+            <!-- User -->
+            <Button text="Delete User" onAction="#deleteUser"/>
+
+        </VBox>
+    </left>
+
+    <!-- 🖥 CENTER AREA -->
+    <center>
+        <StackPane fx:id="contentArea">
+            <Label text="Select an option from menu"/>
+        </StackPane>
+    </center>
+
+</BorderPane>

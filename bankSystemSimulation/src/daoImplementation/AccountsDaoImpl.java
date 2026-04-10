@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import dao.AccountDao;
 import entity.Account;
@@ -21,7 +23,7 @@ public class AccountsDaoImpl implements AccountDao {
 		
 		ps.setInt(1, account.getAccountId());
 		ps.setInt(2, account.getUserId());
-		ps.setString(3,account.getAccountType().name());
+		ps.setString(3,account.getAccountType());
 		ps.setDouble(4, account.getBalance());
 		
 		int row=ps.executeUpdate();
@@ -62,29 +64,36 @@ public class AccountsDaoImpl implements AccountDao {
 	}
 
 	@Override
-	public Account getAccountByUserId(int userId) throws SQLException {
-		String sql="SELECT * FROM `accounts` WHERE` `userId`=?";
+	public List<Account> getAccountByUserId(int userId) throws SQLException {
+		String sql="select * from accounts where (user_id= ?) ";
 		
-		Connection con = DBConnectionUtil.getConnection();
-		PreparedStatement ps = con.prepareStatement(sql);
+		Connection con= DBConnectionUtil.getConnection();
+		PreparedStatement ps= con.prepareStatement(sql);
 		
-		ps.setInt(1,userId);
+		ps.setInt(1, userId);
 		
-		ResultSet rs=ps.executeQuery(sql);
-		if(rs.next()) {
+		ResultSet rs=ps.executeQuery();
+		
+		List<Account> list= new ArrayList<>();
+		
+		while(rs.next()) {
 			Account account=new Account();//account_id`,`user_id`,`account_type`,`balance
-			account.setAccountId(rs.getInt(1));
-			account.setUserId(rs.getInt(2));
-			account.setAccountType(AccountType.valueOf(rs.getString(3)));
+			account.setAccountId(rs.getInt("account_id"));
+			account.setUserId(rs.getInt("user_id"));
+			account.setAccountType(rs.getString("account_type"));
 			
-			return account;
+			 list.add(account);
 		}
-		return null;
+		return list;
 	}
+//	public static void main(String[] args) throws SQLException {
+//		AccountsDaoImpl ch= new AccountsDaoImpl();
+//		System.out.println(ch.getAccountByUserId(2));
+//	}
 
 	@Override
 	public Account getAccount(int accountNum) throws SQLException {
-String sql="SELECT * FROM `accounts` WHERE` `accountNum`=?";
+		String sql="SELECT * FROM `accounts` WHERE` `accountNum`=?";
 		
 		Connection con = DBConnectionUtil.getConnection();
 		PreparedStatement ps = con.prepareStatement(sql);
@@ -96,7 +105,7 @@ String sql="SELECT * FROM `accounts` WHERE` `accountNum`=?";
 			Account account=new Account();
 			account.setAccountId(rs.getInt(1));
 			account.setUserId(rs.getInt(2));
-			account.setAccountType(AccountType.valueOf(rs.getString(3)));
+			account.setAccountType(rs.getString(3));
 			return account;
 		}
 		return null;
