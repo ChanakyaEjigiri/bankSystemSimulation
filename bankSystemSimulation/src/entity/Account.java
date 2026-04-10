@@ -4,13 +4,13 @@ package entity;
 public class Account {
 	private int accountId;
 	private int userId;
-	private AccountType accountType;
+	private String accountType;
 	private Double balance;
 	
 	public Account() {
 		
 	}
-	public Account(int accountId, int userId, AccountType accountType, Double balance) {
+	public Account(int accountId, int userId, String accountType, Double balance) {
 		super();
 		this.accountId = accountId;
 		this.userId = userId;
@@ -30,10 +30,10 @@ public class Account {
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-	public AccountType getAccountType() {
+	public String getAccountType() {
 		return accountType;
 	}
-	public void setAccountType(AccountType accountType) {
+	public void setAccountType(String accountType) {
 		this.accountType = accountType;
 	}
 	public Double getBalance() {
