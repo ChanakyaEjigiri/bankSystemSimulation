@@ -8,8 +8,16 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import service.AccountServices;
 import service.UserService;
 import utils.SessionManager;
+
+import java.awt.Button;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import entity.Account;
 import entity.User;
 
 public class LoginController {
@@ -19,6 +27,9 @@ public class LoginController {
 
     @FXML
     private PasswordField txtPassword;
+    
+    @FXML
+    private Button btnLogout;
 
     @FXML
     private Label lblMessage;
@@ -32,21 +43,34 @@ public class LoginController {
 
         User user = userService.LoginService(username, password);
         
+        
+        
         if(user!=null) {
+        	SessionManager.setUser(user);
+            
+            AccountServices accountService=new AccountServices(); 
+//            System.out.println(user.getUserId());
+//            System.out.println(accountService.getAccounts(2));
+            List<Account> accounts = accountService.getAccounts(user.getUserId());
+            List<Integer> accountIds = new ArrayList<>();
+            for(Account acc: accounts ) {
+            	accountIds.add(acc.getAccountId());
+            }
+            
+            SessionManager.setAccountIds(accountIds);
         	//System.out.println("logged in");
             lblMessage.setText("Login Successful");
-			SessionManager.setLoggedInUserid(user.getUserId());
-			SessionManager.setUserName(user.getUserName());
+			
             
             try {
 	            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/dashBoard.fxml"));
 	            Parent root = loader.load();
 	            
-	            DashboardController controller = loader.getController();
-	            controller.setUser(user); 
+//	            DashboardController controller = loader.getController();
+//	            controller.setUser(user); 
 
 	            Stage stage = (Stage) txtUsername.getScene().getWindow();
-	            stage.setScene(new Scene(root));
+	            stage.setScene(new Scene(root,800,600));
 	            stage.setTitle("Register");
 	            stage.show();
 
@@ -73,4 +97,10 @@ public class LoginController {
             e.printStackTrace();
         }
     }
+    
+        
+//        DashboardController controller = loader.getController();
+//        controller.setUser(user); 
+
+    
 }

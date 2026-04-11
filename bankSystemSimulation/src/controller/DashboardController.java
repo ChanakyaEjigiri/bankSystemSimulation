@@ -117,7 +117,7 @@ public class DashboardController {
 		try {
 			Parent root = loader.load();
 			Stage stage = (Stage) contentArea.getScene().getWindow();
-	        stage.setScene(new Scene(root));
+	        stage.setScene(new Scene(root,800,600));
 	        stage.setTitle("Register");
 	        stage.show();
 	        

@@ -1,0 +1,23 @@
+DashBoard after login:
+	- profile(display username, user_id, user_accounts)
+		-- update profile(display buttons to update username, mobile, address, fullName, password)
+	
+	- deposit
+	- withdraw
+	- transfer to account
+	- check balance
+	- transaction tab(display buttons to sort based date,amount)
+	
+	- createAccount
+	- changeAccount(display user accounts in dropdown menu)
+	
+	- delete account
+	- delete user
+	- logout
+	
+sessionManager:
+	- username
+	- get userId using userName
+	- get all the accounts associated with userId
+	- store the accounts in a list
+	- use them
