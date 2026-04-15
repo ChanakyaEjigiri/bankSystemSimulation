@@ -92,10 +92,6 @@ public class DashboardController {
         loadUI("createAccount.fxml");
     }
 
-    @FXML
-    private void showChangeAccount() {
-        loadUI("changeAccount.fxml");
-    }
 
     @FXML
     private void deleteAccount() {

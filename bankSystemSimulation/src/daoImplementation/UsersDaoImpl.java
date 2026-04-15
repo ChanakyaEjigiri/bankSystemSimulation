@@ -40,15 +40,25 @@ public class UsersDaoImpl implements UsersDao{
 	}
 
 	@Override
-	public boolean updateUser(String userName, String password) throws SQLException {
-		String sql="UPDATE `users` SET `password` = ? WHERE (`user_name` = ?)";
+	public boolean updateUser(User user) throws SQLException {
+		
+		
+		String sql = "UPDATE users SET full_name=?,username=?,password=?,mobile_number=?,address=? WHERE user_id=?";
 		Connection con = DBConnectionUtil.getConnection();
 		PreparedStatement ps = con.prepareStatement(sql);
+
+
+		ps.setString(3, user.getPassword());
+		ps.setString(1, user.getFullName());
+		ps.setString(4, user.getMobileNumber());
+		ps.setString(5, user.getAdress());
+		ps.setString(2, user.getUserName());
+		ps.setInt(6, user.getUserId());
+
 		
-		ps.setString(1, password);
-		ps.setString(2, userName);
-		int rowsupdated=ps.executeUpdate();		
-		return rowsupdated>0;
+		int rows = ps.executeUpdate();
+		
+		return rows>0;
 		
 	}
 

@@ -16,7 +16,7 @@
                    style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;" />
 
             <Region HBox.hgrow="ALWAYS"/>
-
+            
             <Button text="Logout" onAction="#handleLogout"/>
         </HBox>
     </top>
@@ -43,7 +43,6 @@
 
             <!-- Account Management -->
             <Button text="Create Account" onAction="#showCreateAccount"/>
-            <Button text="Change Account" onAction="#showChangeAccount"/>
             <Button text="Delete Account" onAction="#deleteAccount"/>
 
             <!-- User -->

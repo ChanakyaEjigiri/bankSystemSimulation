@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="15" alignment="CENTER"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controller.DepositController">
+
+    <Label text="Deposite Money" style="-fx-font-size: 18px;"/>
+
+    <VBox spacing="10" alignment="TOP_CENTER" fx:id="formBox">
+        <TextField fx:id="txtAmount" promptText="Enter Amount"/>
+        <Label text="select accountId"/>
+    	<ComboBox fx:id="accountDropdown" promptText="Select account"/>
+        
+        <Button text="Deposit" onAction="#handleDeposit"/>
+    </VBox>
+
+    <VBox spacing="10" alignment="TOP_CENTER" fx:id="resultBox" visible="false" managed="false">
+
+        <Label text="Transaction Result" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+
+        <Label fx:id="lblMessage"/>
+        <Label fx:id="lblAmount"/>
+        <Label fx:id="lblBalance"/>
+
+        <Button text="New Transaction" onAction="#handleNewTransaction"/>
+    </VBox>
+
+</VBox>
